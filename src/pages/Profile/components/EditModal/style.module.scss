@@ -1,0 +1,16 @@
+@import '@styles/base';
+
+.modalContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .formContainer {
+        border: 0;
+        border-radius: 5px;
+        width: 450px;
+        background-color: $color-white;
+        padding: 16px;
+    }
+}
+
