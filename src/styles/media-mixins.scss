@@ -27,7 +27,7 @@ $screen-1024-limit: 1024px;
 }
 
 @mixin apply-at-md-size {
-  @media (min-width: $screen-md-limit) {
+  @media (max-width: $screen-md-limit) {
     @content;
   }
 }
