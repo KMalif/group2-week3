@@ -1,1 +1,7 @@
 @import '@styles/base';
+
+.formContainer {
+    margin-top: 64px;
+    @include directionY;
+    align-items: center;
+}

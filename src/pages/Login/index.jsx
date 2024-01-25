@@ -4,32 +4,23 @@ import { Avatar, Box, Button, Checkbox, Container, FormControlLabel, Grid, Link,
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 
 import style from './style.module.scss'
+import { FormattedMessage } from 'react-intl';
 
 const Login = () => {
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
     }
 
-
   return (
     <Container component="main" maxWidth="xs">
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-            
+        <Box className={style.formContainer}>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Login
+            <FormattedMessage id='app_title_signin'/>
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>              
@@ -38,7 +29,7 @@ const Login = () => {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label={<FormattedMessage id='form_label_email'/>}
                   name="email"
                   autoComplete="email"
                 />
@@ -48,7 +39,7 @@ const Login = () => {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  label={<FormattedMessage id='form_label_password'/>}
                   type="password"
                   id="password"
                   autoComplete="new-password"
@@ -61,12 +52,12 @@ const Login = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Login
+              <FormattedMessage id='app_title_signin'/>
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
                 <Link href="/signup" variant="body2">
-                  Do not have an account yet ? Sign up
+                    <FormattedMessage id='form_suggest_signup'/>
                 </Link>
               </Grid>
             </Grid>
