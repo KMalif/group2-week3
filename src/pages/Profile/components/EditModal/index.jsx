@@ -1,5 +1,7 @@
 import React from 'react'
-import { Box, Container, Modal, Typography } from '@mui/material'
+import { Avatar, Box, Button, Container, Grid, Modal, TextField, Typography } from '@mui/material'
+import { FormattedMessage } from 'react-intl'
+import ProfileImg from '../../../../static/images/profile.png'
 
 import style from './style.module.scss'
 
@@ -15,11 +17,39 @@ const EditProfileModal = ({open, handleClose}) => {
         >
             <Box className={style.formContainer}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Text in a modal
+                    <FormattedMessage id='form_edit_profile_title'/>
                 </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                </Typography>
+                <Box component="form" noValidate sx={{ mt: 2 }}>
+                    <Typography id="modal-modal-title" className={style.label}>
+                        <FormattedMessage id='form_edit_profile_img'/>
+                    </Typography>
+                    <Box className={style.avatarContainer}>
+                        <Avatar src={ProfileImg} className={style.avatar}/>
+                        <Box className={style.buttonContainer}>
+                        <Button variant="text" color="success" size='small'>Edit</Button>
+                        <Typography variant="caption" className={style.textSuggest}>
+                            Recomended: Square JPG, PNG
+                        </Typography>
+                        {/* <Button color="error" size='small'>Remove</Button> */}
+                        </Box>
+                    </Box>
+
+                    <Typography id="modal-modal-title" className={style.label}>
+                        <FormattedMessage id='form_edit_profile_name'/>
+                    </Typography>
+                    <TextField
+                        required
+                        fullWidth
+                        id="fullname"
+                        variant="standard"
+                        name="fullname"
+                        autoComplete="fullname"
+                    /> 
+                </Box>
+                <Box  className={style.buttonWrap}>
+                    <Button variant="outlined" color="success" size='small'>Cancel</Button>
+                    <Button variant="contained" color="success" size='small'>Save</Button>
+                </Box>
             </Box>
         </Modal>
   )
