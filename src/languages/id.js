@@ -7,4 +7,8 @@ export default {
   app_popup_error_title: 'Terjadi kesalahan!',
   app_popup_error_message: 'Maaf, telah terjadi kesalahan. Silakan coba beberapa saat lagi',
   app_popup_close_button_label: 'Tutup',
+  create_post_title: 'Buat Postingan',
+  max_characters_error: 'Maksimal 255 karakter',
+  image_upload_error: 'Hanya file gambar yang diperbolehkan.',
+  empty_post_input_error: 'Mohon isi deskripsi dan unggah foto.',
 };

@@ -1,0 +1,95 @@
+@import '@styles/base';
+@import '@styles/default.scss';
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-hidden {
+    display: none;
+}
+
+.content-container {
+    margin: 0 2rem 200px 2rem;
+    padding: 15px 30px;
+    background-color: cadetblue;
+    border-radius: 15px;
+    color: white;
+
+    textarea {
+        font-size: 18px;
+        resize: none;
+        padding: 10px;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    textarea:focus {
+        outline: none;
+    }
+}
+
+.test-box{
+    background-color: red;
+}
+
+.color-blue{
+    color: blue;
+}
+
+.error-box{
+    margin: 10px 0px;
+    width: 100%;
+    background-color: pink;
+    color: red;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.submission-row {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-top: 10px;
+}
+
+.submission-row-with-image {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.submission-buttons{
+    display: flex;
+}
+
+.image-preview-wrapper{
+    width: 100%;
+    height: 300px;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.upload-image-btn {
+    margin-right: 20px;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    filter: invert(100%) sepia(1%) saturate(7500%) hue-rotate(135deg) brightness(105%) contrast(101%);
+}
+
+.submit-post {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 10px;
+    color: cadetblue;
+}
