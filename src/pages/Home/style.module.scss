@@ -1,1 +1,145 @@
 @import '@styles/base';
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+
+  .bgHeader {
+    width: 100%;
+    padding: 100px 200px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.336)),
+      url('../../static/images/bg-header.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include apply-at-md-size {
+      padding: 50px;
+    }
+
+    .textHeader {
+      @include directionY;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 30px;
+
+      h1 {
+        font-size: 54px;
+      }
+
+      p {
+        font-weight: 500;
+        font-size: 14px;
+        color: $color-white;
+      }
+
+      a {
+        font-weight: bold;
+        font-size: 18px;
+        padding: 10px 30px;
+        color: $color-dark-blue;
+        background-color: $color-light-blue;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      @include apply-at-md-size {
+        h1 {
+          font-size: 24px;
+        }
+
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .headText {
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 56px;
+    padding: 20px 70px;
+    @include apply-at-md-size {
+      padding: 20px 40px;
+    }
+
+    h1 {
+      color: black;
+      font-size: 38px;
+      font-weight: 500;
+    }
+  }
+
+  .searchInput {
+    @include directionX;
+    width: 100%;
+    padding: 0 70px;
+    @include apply-at-md-size {
+      padding: 0 40px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      padding: 0 20px;
+      border-radius: 5px;
+      border: none;
+      background-color: rgba(46, 134, 222, 1);
+      color: $color-white;
+    }
+  }
+
+  .boxGrid {
+    @include directionX;
+    justify-content: center;
+    align-items: center;
+    @include apply-at-md-size {
+      flex-direction: column-reverse;
+    }
+
+    .description {
+      @include directionY;
+      gap: 20px;
+      font-size: 14px;
+      color: #5e5e5e;
+      width: 40%;
+      padding: 35px 10px;
+      text-align: justify;
+      @include apply-at-md-size {
+        width: 80%;
+      }
+
+      .boxProfile {
+        @include directionX;
+        align-items: center;
+        gap: 5px;
+
+        img {
+          width: 40px;
+          height: 40px;
+          object-fit: cover;
+          border-radius: 100%;
+        }
+      }
+    }
+
+    .imgGrid {
+      width: 30%;
+      @include apply-at-md-size {
+        width: 70%;
+      }
+    }
+  }
+}
