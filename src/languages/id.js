@@ -14,4 +14,12 @@ export default {
   app_main_content_text: 'Artikel',
   app_search_button: 'Cari',
   app_main_content_description_article: 'Apakah konser rock benar-benar kembali populer?',
+
+  app_title_signup: 'Daftar',
+  app_title_signin: 'Masuk',
+  form_label_fullname: 'Nama Lengkap',
+  form_label_email: 'Email',
+  form_label_password: 'Password',
+  form_suggest_signin: 'Sudah punya akun ? Masuk',
+  form_suggest_signup: 'Belum punya akun ? Daftar',
 };
