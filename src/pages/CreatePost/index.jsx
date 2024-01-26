@@ -2,14 +2,21 @@ import classes from './style.module.scss'
 import ImageIcon from '@static/images/ImageIcon.svg'
 import { useState } from 'react'
 import { FormattedMessage } from 'react-intl';
+import { useDispatch } from 'react-redux';
+import { setImage } from './action';
+import { setPost } from './action';
 
 const CreatePost = () => {
     const [contentData, setContentData] = useState()
+    const [selectedImage, setSelectedImage] = useState(null);
     const [textNotError, setTextNotError] = useState(true)
     const [imageUploadNotError, setImageUploadNotError] = useState(true)
     const [contentNotEmptyError, setcontentNotEmptyError] = useState(true)
     const [textNotEmpty, setTextNotEmpty] = useState(false)
     const [imageNotEmpty, setImageNotEmpty] = useState(false)
+
+    const dispatch = useDispatch()
+
     const onChangeHandler = (value, type) => {
         console.log(contentData)
         setContentData({
@@ -40,6 +47,27 @@ const CreatePost = () => {
                 [type]: value
             })
             setImageNotEmpty(true)
+            const reader = new FileReader();
+            // let imgEncoded
+            reader.readAsDataURL(value);
+            reader.onloadend = function () {
+                // console.log(imgEncoded, '<<<< imgEncoded')
+                setSelectedImage(reader.result);
+                // const payload = {
+                //     file: reader.result,
+                //     upload_preset: 'wbsjmxus'
+                // }
+                // console.log(payload,"PAYLOAD")
+                // dispatch(setImage(
+                //     payload,
+                //     () => {
+                //         console.log("Callback success");
+                //     },
+                //     (error) => {
+                //         console.log(error);
+                //     }
+                // ))
+            }
         }
     }
     const handleSubmit = () => {
@@ -47,7 +75,57 @@ const CreatePost = () => {
         if (textNotEmpty == false || imageNotEmpty == false) {
             setcontentNotEmptyError(false)
         } else {
-            setcontentNotEmptyError(true)
+            console.log(selectedImage, '<<< SELECTED IMAGE SUBMIT')
+            const payload = {
+                file: selectedImage,
+                upload_preset: 'wbsjmxus'
+            }
+            dispatch(setImage(
+                payload,
+                (imageUrl) => {
+                    console.log(imageUrl)
+                    const dbPayload = {
+                        imageURL: imageUrl,
+                        description: contentData?.contentText
+                    }
+                    dispatch(setPost(
+                        dbPayload,
+                        () => {
+                            console.log("STORED IN DB");
+                        }, (error) => {
+                            console.log(error);
+                            console.log("NOT IN DB");
+                        }
+                    ))
+                    console.log("Callback success");
+                },
+                (error) => {
+                    console.log(error);
+                }
+            ))
+            // console.log(contentData.contentImg)
+            // setcontentNotEmptyError(true)
+            // const imageFormData = new FormData();
+            // const reader = new FileReader();
+            // let imgEncoded
+            // reader.readAsDataURL(contentData.contentImg);
+            // reader.onloadend = function () {
+            //     console.log(imgEncoded, '<<<< imgEncoded')
+            //     const payload = {
+            //         file: reader.result,
+            //         upload_preset: 'wbsjmxus'
+            //     }
+            //     console.log(payload,"PAYLOAD")
+            //     dispatch(setImage(
+            //         payload,
+            //         () => {
+            //             console.log("Callback success");
+            //         },
+            //         (error) => {
+            //             console.log(error);
+            //         }
+            //     ))
+            // }
         }
     }
     return (
@@ -69,7 +147,6 @@ const CreatePost = () => {
                         <>
                         </>
                     )}
-
                     <div className={imageUploadNotError ? classes["display-hidden"] : classes["error-box"]}><FormattedMessage id="image_upload_error" /></div>
                     <div className={contentNotEmptyError ? classes["display-hidden"] : classes["error-box"]}><FormattedMessage id="empty_post_input_error" /></div>
                     <div className={classes["submission-row"]}>
