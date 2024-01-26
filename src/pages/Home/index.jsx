@@ -43,7 +43,7 @@ const Home = ({ selectPost }) => {
           <p>
             <FormattedMessage id="app_header_sub_title" />
           </p>
-          <a href="/create-article">
+          <a href="/create-post">
             <FormattedMessage id="app_header_button" />
           </a>
         </div>
