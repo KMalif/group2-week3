@@ -1,16 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Avatar, Box, Button, Checkbox, Container, FormControlLabel, Grid, Link, TextField, Typography } from '@mui/material'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import {login} from './actions'
 
 import style from './style.module.scss'
 import { FormattedMessage } from 'react-intl';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Login = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const [formData, setFormData] = useState({})
+
+    const onChangeHandler = (value, type) => {
+      setFormData({
+        ...formData,
+        [type]: value
+      })
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
+        const dataUser = {
+          fullName: formData?.fullName,
+          email: formData?.email,
+          password: formData?.password
+        }
+        dispatch(login(
+          dataUser,
+          () => {
+            console.log('success login')
+            navigate('/')
+          },
+          (error) => {
+            toast(error)
+            console.log('failed login')
+          }
+        ))
     }
 
   return (
@@ -32,6 +61,7 @@ const Login = () => {
                   label={<FormattedMessage id='form_label_email'/>}
                   name="email"
                   autoComplete="email"
+                  onChange={(e) => onChangeHandler(e.target.value, 'email')}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -43,6 +73,7 @@ const Login = () => {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={(e) => onChangeHandler(e.target.value, 'password')}
                 />
               </Grid>
             </Grid>
