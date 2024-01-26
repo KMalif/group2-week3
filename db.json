@@ -1,10 +1,19 @@
 {
   "posts": [
     {
-      "id": "e331",
-      "imageURL": "https://res.cloudinary.com/doitbylro/image/upload/v1706259249/wnbgti18p8ev0ly3pm3h.jpg",
-      "description": "asfasfasf"
+      "userId": "6baf",
+      "postId": "412asw",
+      "imageURL": "",
+      "description": ""
     }
   ],
-  "users": []
+  "users": [
+    {
+      "userId": "",
+      "fullName": "",
+      "email": "",
+      "password": "",
+      "pictureURL": ""
+    }
+  ]
 }
