@@ -19,6 +19,7 @@ const routes = [
     name: 'Create Post',
     protected: false,
     component: CreatePost,
+    layout: MainLayout,
   },
 
 
