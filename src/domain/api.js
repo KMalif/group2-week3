@@ -37,7 +37,6 @@ export const callAPI = async (endpoint, method, header = {}, params = {}, data =
 
 export const fetchHomePostData = () => callAPI(urls.homePost, 'GET');
 export const fetchUserData = () => callAPI(urls.user, 'GET');
-export const ping = () => callAPI(urls.ping, 'GET');
 export const callUploadImage = async (url, method, header = {}, params = {}, data = {}) => {
   const defaultHeader = {
     'Content-Type': 'application/json; charset=UTF-8',
