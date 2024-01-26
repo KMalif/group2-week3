@@ -1,0 +1,1 @@
+export const SET_EDIT_PROFILE = 'SET_EDIT_PROFILE'

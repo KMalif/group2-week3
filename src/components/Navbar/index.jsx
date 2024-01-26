@@ -43,6 +43,10 @@ const Navbar = ({ title, locale, theme }) => {
     navigate('/');
   };
 
+  const goToProfile = () => {
+    navigate('/profile');
+  };
+
   return (
     <div className={classes.headerWrapper} data-testid="navbar">
       <div className={classes.contentWrapper}>
@@ -59,6 +63,7 @@ const Navbar = ({ title, locale, theme }) => {
             <div className={classes.lang}>{locale}</div>
             <ExpandMoreIcon />
           </div>
+          <div onClick={goToProfile} className={classes["profile-button"]}>Profile</div>
         </div>
         <Menu open={open} anchorEl={menuPosition} onClose={handleClose}>
           <MenuItem onClick={() => onSelectLang('id')} selected={locale === 'id'}>

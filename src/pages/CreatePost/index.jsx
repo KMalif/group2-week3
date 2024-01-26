@@ -48,25 +48,9 @@ const CreatePost = () => {
             })
             setImageNotEmpty(true)
             const reader = new FileReader();
-            // let imgEncoded
             reader.readAsDataURL(value);
             reader.onloadend = function () {
-                // console.log(imgEncoded, '<<<< imgEncoded')
                 setSelectedImage(reader.result);
-                // const payload = {
-                //     file: reader.result,
-                //     upload_preset: 'wbsjmxus'
-                // }
-                // console.log(payload,"PAYLOAD")
-                // dispatch(setImage(
-                //     payload,
-                //     () => {
-                //         console.log("Callback success");
-                //     },
-                //     (error) => {
-                //         console.log(error);
-                //     }
-                // ))
             }
         }
     }
@@ -103,29 +87,6 @@ const CreatePost = () => {
                     console.log(error);
                 }
             ))
-            // console.log(contentData.contentImg)
-            // setcontentNotEmptyError(true)
-            // const imageFormData = new FormData();
-            // const reader = new FileReader();
-            // let imgEncoded
-            // reader.readAsDataURL(contentData.contentImg);
-            // reader.onloadend = function () {
-            //     console.log(imgEncoded, '<<<< imgEncoded')
-            //     const payload = {
-            //         file: reader.result,
-            //         upload_preset: 'wbsjmxus'
-            //     }
-            //     console.log(payload,"PAYLOAD")
-            //     dispatch(setImage(
-            //         payload,
-            //         () => {
-            //             console.log("Callback success");
-            //         },
-            //         (error) => {
-            //             console.log(error);
-            //         }
-            //     ))
-            // }
         }
     }
     return (
