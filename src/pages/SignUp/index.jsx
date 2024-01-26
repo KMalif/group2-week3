@@ -3,14 +3,38 @@ import React, { useState } from 'react'
 
 import { Avatar, Box, Button, Container, Grid, Link, TextField, Typography } from '@mui/material'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import {register} from './actions'
 
 import style from './style.module.scss'
 import { FormattedMessage } from 'react-intl';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const [user, setUser] = useState({})
+
+    const onChangeHandler = (value, type) => {
+      setUser({
+        ...user,
+        [type]: value
+      })
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        const dataUser = {
+          fullName: user.fullName,
+          email: user.email,
+          password: user.password
+        }
+        dispatch(register(
+          dataUser,
+          () => {
+            navigate('/login')
+          }
+        ))
 
     }
 
@@ -33,6 +57,7 @@ const SignUp = () => {
                   label={<FormattedMessage id='form_label_fullname'/>}
                   name="fullname"
                   autoComplete="fullname"
+                  onChange={(e) => onChangeHandler(e.target.value, 'fullName')}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -43,6 +68,7 @@ const SignUp = () => {
                   label={<FormattedMessage id='form_label_email'/>}
                   name="email"
                   autoComplete="email"
+                  onChange={(e) => onChangeHandler(e.target.value, 'email')}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -54,6 +80,7 @@ const SignUp = () => {
                     label={<FormattedMessage id='form_label_password'/>}
                     name="password"
                     autoComplete="new-password"
+                    onChange={(e) => onChangeHandler(e.target.value, 'password')}
                 />
               </Grid>
             </Grid>

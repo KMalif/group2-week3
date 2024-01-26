@@ -4,9 +4,15 @@ import { merge } from 'lodash';
 import request from '@utils/request';
 
 const urls = {
+  homePost: 'posts',
+  user: 'users/:id',
   ping: 'ping.json',
+
+  
+  register: 'users/',
+  login: 'users/',
   uploadImage: 'https://api.cloudinary.com/v1_1/doitbylro/image/upload',
-  storePost: 'posts'
+  storePost: 'posts',
 };
 
 export const callAPI = async (endpoint, method, header = {}, params = {}, data = {}) => {
@@ -29,6 +35,9 @@ export const callAPI = async (endpoint, method, header = {}, params = {}, data =
   });
 };
 
+export const fetchHomePostData = () => callAPI(urls.homePost, 'GET');
+export const fetchUserData = () => callAPI(urls.user, 'GET');
+export const ping = () => callAPI(urls.ping, 'GET');
 export const callUploadImage = async (url, method, header = {}, params = {}, data = {}) => {
   const defaultHeader = {
     'Content-Type': 'application/json; charset=UTF-8',
@@ -50,5 +59,15 @@ export const callUploadImage = async (url, method, header = {}, params = {}, dat
 };
 
 export const ping = () => callAPI(urls.ping, 'get');
+
+export const register = (dataUser) => {
+  console.log(dataUser, '<<< DATA USER API')
+  return callAPI(urls.register, 'POST', {}, {}, dataUser);
+}
+
+export const login = () => {
+  return callAPI(urls.login, 'GET', {}, {});
+}
 export const uploadImage = (imageData) => callUploadImage(urls.uploadImage, 'post', {}, {}, imageData)
 export const storePost = (postData) => callAPI(urls.storePost, 'POST', {}, {}, postData)
+
