@@ -12,4 +12,11 @@ export default {
   form_edit_profile_img: 'Profile Image',
   form_edit_profile_name: 'Name*',
 
+  app_title_signup: 'Sign Up',
+  app_title_signin: 'Sign In',
+  form_label_fullname: 'Fullname',
+  form_label_email: 'Email',
+  form_label_password: 'Password',
+  form_suggest_signin: 'Already have an account? Sign in',
+  form_suggest_signup: 'Do not have an account? Sign up',
 };
