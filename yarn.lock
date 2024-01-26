@@ -1521,7 +1521,7 @@
   "resolved" "https://registry.npmjs.org/@mui/icons-material/-/icons-material-5.14.1.tgz"
   "version" "5.14.1"
   dependencies:
-    "@babel/runtime" "^7.22.6"
+    "@babel/runtime" "^7.23.8"
 
 "@mui/material@^5.0.0", "@mui/material@^5.14.1":
   "integrity" "sha512-WtsgYuageTunLfxH3Ri+o1RuQTFImtRHxMcVNyD0Hhd2/znjW6KODNz0XfjvLRnNCAynBxZNiflcoIBW40h9PQ=="

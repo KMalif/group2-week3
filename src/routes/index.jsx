@@ -1,5 +1,5 @@
 import MainLayout from '@layouts/MainLayout';
-
+import CreatePost from '@pages/CreatePost';
 import Home from '@pages/Home';
 import Login from '@pages/Login';
 import NotFound from '@pages/NotFound';
@@ -14,7 +14,12 @@ const routes = [
     component: Home,
     layout: MainLayout,
   },
-
+  {
+    path: '/create-post',
+    name: 'Create Post',
+    protected: false,
+    component: CreatePost,
+  },
 
 
   {
