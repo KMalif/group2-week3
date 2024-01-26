@@ -15,6 +15,10 @@ export default {
   app_search_button: 'Search',
   app_main_content_description_article: 'Are rock concert really coming back into fashion?',
 
+  form_edit_profile_title: 'Edit Profile',
+  form_edit_profile_img: 'Profile Image',
+  form_edit_profile_name: 'Name*',
+
   app_title_signup: 'Sign Up',
   app_title_signin: 'Sign In',
   form_label_fullname: 'Fullname',
