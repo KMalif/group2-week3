@@ -28,6 +28,7 @@ const routes = [
     name: 'Profile',
     protected: false,
     component: Profile,
+    layout: MainLayout
   },
   
   {

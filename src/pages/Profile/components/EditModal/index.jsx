@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, Box, Button, Container, Grid, Modal, TextField, Typography } from '@mui/material'
+import { Avatar, Box, Button, Modal, TextField, Typography } from '@mui/material'
 import { FormattedMessage } from 'react-intl'
 import ProfileImg from '../../../../static/images/profile.png'
 
@@ -33,7 +33,6 @@ const EditProfileModal = ({open, handleClose}) => {
                         {/* <Button color="error" size='small'>Remove</Button> */}
                         </Box>
                     </Box>
-
                     <Typography id="modal-modal-title" className={style.label}>
                         <FormattedMessage id='form_edit_profile_name'/>
                     </Typography>
