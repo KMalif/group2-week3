@@ -111,7 +111,7 @@
       flex-direction: column-reverse;
     }
 
-    .description {
+    .desc {
       @include directionY;
       gap: 20px;
       font-size: 14px;

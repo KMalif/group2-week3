@@ -1,22 +1,37 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { connect, useDispatch } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
-
-import { ping } from '@containers/App/actions';
-
 import { Box } from '@mui/material';
+import { getAllPost } from './actions';
+import { selectAllPost } from './selectors';
 
-import imgArticle from '../../static/images/img-article.png';
 import imgProfile from '../../static/images/img-profile.jpg';
 
 import classes from './style.module.scss';
 
-const Home = () => {
+const Home = ({ selectPost }) => {
   const dispatch = useDispatch();
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    dispatch(ping());
+    dispatch(
+      getAllPost(
+        (res) => {
+          setData(res);
+          console.log(res);
+        },
+        (error) => {
+          console.log(error);
+        }
+      )
+    );
   }, [dispatch]);
+
+  useEffect(() => {
+    setData(selectPost);
+  }, [selectPost]);
 
   return (
     <div className={classes.container}>
@@ -46,70 +61,30 @@ const Home = () => {
           </button>
         </div>
         <Box sx={{ flexGrow: 1, paddingX: 4, paddingY: 4, gap: 2 }}>
-          <div className={classes.boxGrid}>
-            <div className={classes.description}>
-              <p>
-                Monotonectally pursue backward-compatible ideas without empowered imperatives. Interactively predominate
-                low-risk high-yield ROI rather than adaptive e-tailers. Progressively morph standardized value vis-a-vis
-                just in time portals. Quickly repurpose ethical vortals rather than technically sound systems.
-                Intrinsicly formulate.
-              </p>
-              <div className={classes.boxProfile}>
-                <img src={imgProfile} alt="Profile" />
-                <p>Arnold Johnson</p>
+          {data?.map((item, index) => (
+            <div key={index} className={classes.boxGrid}>
+              <div className={classes.desc}>
+                <p>{item.description}</p>
+                <div className={classes.boxProfile}>
+                  <img src={imgProfile} alt="Profile" />
+                  <p>Arnold Johnson</p>
+                </div>
               </div>
+              <img className={classes.imgGrid} src={item.imageURL} alt="Article" />
             </div>
-            <img className={classes.imgGrid} src={imgArticle} alt="Article" />
-          </div>
-          <div className={classes.boxGrid}>
-            <div className={classes.description}>
-              <p>
-                Monotonectally pursue backward-compatible ideas without empowered imperatives. Interactively predominate
-                low-risk high-yield ROI rather than adaptive e-tailers. Progressively morph standardized value vis-a-vis
-                just in time portals. Quickly repurpose ethical vortals rather than technically sound systems.
-                Intrinsicly formulate.
-              </p>
-              <div className={classes.boxProfile}>
-                <img src={imgProfile} alt="Profile" />
-                <p>Arnold Johnson</p>
-              </div>
-            </div>
-            <img className={classes.imgGrid} src={imgArticle} alt="Article" />
-          </div>
-          <div className={classes.boxGrid}>
-            <div className={classes.description}>
-              <p>
-                Monotonectally pursue backward-compatible ideas without empowered imperatives. Interactively predominate
-                low-risk high-yield ROI rather than adaptive e-tailers. Progressively morph standardized value vis-a-vis
-                just in time portals. Quickly repurpose ethical vortals rather than technically sound systems.
-                Intrinsicly formulate.
-              </p>
-              <div className={classes.boxProfile}>
-                <img src={imgProfile} alt="Profile" />
-                <p>Arnold Johnson</p>
-              </div>
-            </div>
-            <img className={classes.imgGrid} src={imgArticle} alt="Article" />
-          </div>
-          <div className={classes.boxGrid}>
-            <div className={classes.description}>
-              <p>
-                Monotonectally pursue backward-compatible ideas without empowered imperatives. Interactively predominate
-                low-risk high-yield ROI rather than adaptive e-tailers. Progressively morph standardized value vis-a-vis
-                just in time portals. Quickly repurpose ethical vortals rather than technically sound systems.
-                Intrinsicly formulate.
-              </p>
-              <div className={classes.boxProfile}>
-                <img src={imgProfile} alt="Profile" />
-                <p>Arnold Johnson</p>
-              </div>
-            </div>
-            <img className={classes.imgGrid} src={imgArticle} alt="Article" />
-          </div>
+          ))}
         </Box>
       </section>
     </div>
   );
 };
 
-export default Home;
+Home.propTypes = {
+  selectPost: PropTypes.array,
+};
+
+const mapStateToProps = createStructuredSelector({
+  selectPost: selectAllPost,
+});
+
+export default connect(mapStateToProps)(Home);
