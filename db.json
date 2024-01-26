@@ -3,14 +3,14 @@
     {
       "userId": "6baf",
       "postId": "412asw",
-      "imageURL": "",
-      "description": ""
+      "imageURL": "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "description": "Test dulu gak si"
     }
   ],
   "users": [
     {
-      "userId": "",
-      "fullName": "",
+      "userId": "1",
+      "fullName": "Jhon Doe",
       "email": "",
       "password": "",
       "pictureURL": ""
