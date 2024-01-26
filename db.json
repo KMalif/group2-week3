@@ -1,4 +1,19 @@
 {
-    "posts": [],
-    "users": []
+  "posts": [
+    {
+      "userId": "6baf",
+      "postId": "412asw",
+      "imageURL": "",
+      "description": ""
+    }
+  ],
+  "users": [
+    {
+      "userId": "",
+      "fullName": "",
+      "email": "",
+      "password": "",
+      "pictureURL": ""
+    }
+  ]
 }
